@@ -106,7 +106,7 @@ public class Main {
 					}
 				}
 				
-				//향상된 for문 이용 + foundIndex 이용
+				//향상된 for문 이용 + foundIndex 이용 
 //			    int foundIndex = -1 ; // null과 같은 의미로 -1 로 초기화 (존재하지 않는 index 의미)
 //
 //			    int indexId = 0;
@@ -120,7 +120,7 @@ public class Main {
 //			    	indexId++;
 //			    }
 				
-			    // 일반 for문 이용 + foundIndx 이용
+			    // 일반 for문 이용 + foundIndx 이용 
 //			    int foundIndex = -1 ; // null과 같은 의미로 -1 로 초기화 (존재하지 않는 index 의미)
 //				
 //				for (int i = 0; i < articles.size(); i++) {
@@ -132,7 +132,7 @@ public class Main {
 //					}
 //				}
 				
-				// null 검증
+				// null 검증 
 				if (foundArticle == null) { 
 					System.out.println(id + "번 게시물이 존재하지 않습니다");
 					continue;
