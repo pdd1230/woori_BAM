@@ -97,7 +97,6 @@ public class Main {
 					e.printStackTrace();
 				}
 				
-				
 				Article foundArticle = null;  // 재활용과 null 검증을 위해
 				
 				for (Article article : articles) {
@@ -107,6 +106,7 @@ public class Main {
 					}
 				}
 				
+				//향상된 for문 이용 + foundIndex 이용
 //			    int foundIndex = -1 ; // null과 같은 의미로 -1 로 초기화 (존재하지 않는 index 의미)
 //
 //			    int indexId = 0;
@@ -119,7 +119,10 @@ public class Main {
 //			    	}
 //			    	indexId++;
 //			    }
-			
+				
+			    // 일반 for문 이용 + foundIndx 이용
+//			    int foundIndex = -1 ; // null과 같은 의미로 -1 로 초기화 (존재하지 않는 index 의미)
+//				
 //				for (int i = 0; i < articles.size(); i++) {
 //					Article article =articles.get(i);
 //					if (article.id == id) {
@@ -135,12 +138,12 @@ public class Main {
 					continue;
 				}
 				
-				articles.remove(foundArticle);   // 2가지 방법이 있지요 
-//				articles.remove(foundIndex);     // index 이용하는 방법도 주석처리
+				articles.remove(foundArticle);   // 2가지 방법이 있지요. 첫번째 : 객체 이용
+//				articles.remove(foundIndex);     // 두번쨰 : 인덱스 이용, foundIndex 이용하는 방법(2가지도)도 주석처리
 				
 				System.out.println(id + "번 게시물이 삭제 되었습니다");
 				
-			}else {
+			} else {
 				System.out.println("존재하지 않는 명령어 입니다");
 			}
 		}
