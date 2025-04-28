@@ -8,7 +8,7 @@ public class Main {
 		System.out.println("== 프로그램 시작 ==");
 		Scanner sc = new Scanner(System.in); 
        
-		int lastArticleId = 1;  //게시글 번호이니까...마지막게시글번호로 수정
+		int lastArticleId = 1;  
 		List<Article> articles = new ArrayList<>();
 		
 		while (true) {
@@ -30,7 +30,12 @@ public class Main {
 				System.out.printf("내용 : ");
 				String body = sc.nextLine().trim(); 
 				
-				Article article = new Article(lastArticleId , title, body); 
+				// 회원가입 , 게시글 수정 ==> 공통 모듈 만는것 ==> 메소드 작성
+//		    	LocalDateTime now = LocalDateTime.now();
+//		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//		        String formattedNow = now.format(formatter);
+		        
+				Article article = new Article(lastArticleId , title, body, Util.getDateStr()); 
 				articles.add(article); 
 				
 				System.out.println(lastArticleId +"번글이 생성되었습니다");
@@ -44,10 +49,10 @@ public class Main {
 					
 				}
 				
-				System.out.printf("번호    |     제목   |    내용\n");
+				System.out.printf("번호    |     제목   |    내용   |   날짜 와 시간\n");
 				for (int i = articles.size() -1 ; i >= 0; i--) {
 					Article article = articles.get(i);
-					System.out.printf("%d      |     %s   |   %s\n", article.id, article.title, article.body);
+					System.out.printf("%d      |     %s   |   %s   | %s\n", article.id, article.title, article.body, article.regDate);
 				}
 				
 			} else if (cmd.startsWith("article detail ")) { 
@@ -80,7 +85,7 @@ public class Main {
 				}
 
 				System.out.println("번호 : " + foundArticle.id);
-				System.out.println("날짜 : ~~~");
+				System.out.println("날짜 : " + foundArticle.regDate);
 				System.out.println("제목 : " + foundArticle.title);
 				System.out.println("내용 : " + foundArticle.body);
 
@@ -134,7 +139,7 @@ public class Main {
 				
 				for (Article article : articles) {
 					if (article.id == id) {
-						foundArticle = article;   // 중요 ==> 주소 복사
+						foundArticle = article;   
 						break;
 					}
 				}
@@ -149,7 +154,7 @@ public class Main {
 				System.out.println("수정할 내용 :");
 				String body = sc.nextLine().trim();
 				
-				foundArticle.title = title;  // 수정된 값을 객체에다 저장 => 수정				foundArticle.body = body;
+				foundArticle.title = title;  
 				
 				
 				System.out.println(id + "번 게시물이 수정 되었습니다");
@@ -166,10 +171,12 @@ class Article {
 	int id;
 	String title;
 	String body;
+	String regDate;
 
-	public Article(int id, String title, String body) {
+	public Article(int id, String title, String body, String regDate) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
+		this.regDate = regDate;
 	}
 }
