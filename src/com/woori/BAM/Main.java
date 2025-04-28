@@ -30,12 +30,7 @@ public class Main {
 				System.out.printf("내용 : ");
 				String body = sc.nextLine().trim(); 
 				
-				// 회원가입 , 게시글 수정 ==> 공통 모듈 만는것 ==> 메소드 작성
-//		    	LocalDateTime now = LocalDateTime.now();
-//		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//		        String formattedNow = now.format(formatter);
-		        
-				Article article = new Article(lastArticleId , title, body, Util.getDateStr()); 
+				Article article = new Article(lastArticleId , title, body, Util.getDateStr(), 0); 
 				articles.add(article); 
 				
 				System.out.println(lastArticleId +"번글이 생성되었습니다");
@@ -49,10 +44,10 @@ public class Main {
 					
 				}
 				
-				System.out.printf("번호    |     제목   |    내용   |   날짜 와 시간\n");
+				System.out.printf("번호    |     제목   |    내용   |   날짜 와 시간    |   조회수\n");
 				for (int i = articles.size() -1 ; i >= 0; i--) {
 					Article article = articles.get(i);
-					System.out.printf("%d      |     %s   |   %s   | %s\n", article.id, article.title, article.body, article.regDate);
+					System.out.printf("%d      |     %s   |   %s   |  %s     |     %d \n", article.id, article.title, article.body, article.regDate, article.viewCnt);
 				}
 				
 			} else if (cmd.startsWith("article detail ")) { 
@@ -84,10 +79,13 @@ public class Main {
 					continue;
 				}
 
+				foundArticle.viewCnt++;  // 위에 null 검증 통과했으로 조회수 1 증가
+				
 				System.out.println("번호 : " + foundArticle.id);
 				System.out.println("날짜 : " + foundArticle.regDate);
 				System.out.println("제목 : " + foundArticle.title);
 				System.out.println("내용 : " + foundArticle.body);
+				System.out.println("내용 : " + foundArticle.viewCnt); // viewCnt 추가
 
 			} else if (cmd.startsWith("article delete ")) { 
 				String[] cmdBits = cmd.split(" ");  
@@ -172,11 +170,13 @@ class Article {
 	String title;
 	String body;
 	String regDate;
+	int viewCnt;
 
-	public Article(int id, String title, String body, String regDate) {
+	public Article(int id, String title, String body, String regDate, int viewCnt) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
 		this.regDate = regDate;
+		this.viewCnt = viewCnt;
 	}
 }
