@@ -6,15 +6,21 @@ import java.util.Scanner;
 
 public class Main {
 	
-	 static List<Article> articles = new ArrayList<>();
-	 static int lastArticleId = 1;
+	 static List<Article> articles ;
+	 static int lastArticleId ;
+	 
+	 // 시작하자 마자 초기화, 관례 또는 가독성 
+	 static {
+		 articles = new ArrayList<>();
+		 lastArticleId = 1;
+	 }
 
 	 public static void main(String[] args) {
 
 		System.out.println("== 프로그램 시작 ==");
 		Scanner sc = new Scanner(System.in);
 
-		makeTestData(); // 중요 --> 해당 메소드가 만들어 지는 위치?  static 메소드일수 밖에 없는 이유? 
+		makeTestData(); 
 		
 		while (true) {
 			System.out.printf("명령어) ");
@@ -169,17 +175,6 @@ public class Main {
 
 	private static void makeTestData() {
 		
-//		Article ar = new Article(lastArticleId++, Util.getDateStr(),"제목1", "내용1", 10);
-//		articles.add(ar);
-//		Article ar2 = new Article(lastArticleId++, Util.getDateStr(),"제목2", "내용2", 20);
-//		articles.add(ar2);
-//		Article ar3 = new Article(lastArticleId++, Util.getDateStr(),"제목3", "내용3", 30);
-//		articles.add(ar3);
-
-//		코드 2줄이 --> 1줄로 최적화 , lastAticleId++ (후위 연산자 이용)
-//		articles.add(new Article(lastArticleId++, Util.getDateStr(),"제목1", "내용1", 10));
-		
-		// 3개 --> 5개, 최적화 (2단계 ->후위연산자 사용, 코드를 2줄을 한줄로 ) --> 5번  + 반복문 ==> 시작하자 마자 실행
 		for(int i = 1; i <= 5; i++) {
     		articles.add(new Article(lastArticleId++, Util.getDateStr(), "제목" + i, "내용" + i, i * 10));
 		}
