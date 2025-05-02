@@ -8,12 +8,13 @@ import com.woori.BAM.dto.Article;
 import com.woori.BAM.util.Util;
 
 public class App {
-	
-	  List<Article> articles ;
+	  // 전역변수 ==> this (자기 자신을 의미, 객체)
+	  List<Article> articles ;   // List 타입의 articles
 	  int lastArticleId ;
-	 
+	  
+	 // 생성자를 통해서 초기화.  기존 code (static 제거 한 상태)
 	 App() {
-		 articles = new ArrayList<>();
+		 articles = new ArrayList<>(); // 데이터의 구조 ArrayList 형태 객체가 생성
 		 lastArticleId = 1;
 	 }
 	
