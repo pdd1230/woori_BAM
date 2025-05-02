@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class ChatServer {
     public static void main(String[] args) {
-        int port = 9999; // 서버 포트 번호
+        int port = 10001; // 서버 포트 번호
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("서버가 포트 " + port + "에서 대기 중입니다...");
 
